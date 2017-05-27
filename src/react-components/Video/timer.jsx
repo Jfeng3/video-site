@@ -8,14 +8,23 @@ class Timer extends React.Component {
 	super();
 }
 
-	onAnimationFrame() {
-		const progress =  this.props.whistleSoundRate;
+	onAnimationFrame(whistleSoundRate) {
+		const progress =  whistleSoundRate * 100;
 		this.bar.style.height = `${progress}%`;
 
 		if (progress >= 100) {
 			this.props.endAnimation();
 		}
 	}
+
+  componentDidMount(){
+    this.setState(ctx : new AudioContext());
+    this.setState(audio : document.getElementById('myAudio'));
+    this.setState(audioSrc: ctx.createMediaElementSource(this.state.audio));
+    this.setState(analyser:  ctx.createAnalyser());
+  // we have to connect the MediaElementSource with the analyser
+    this.state.audioSrc.connect(this.state.analyser);
+  }
 
 	render() {
 		return (
