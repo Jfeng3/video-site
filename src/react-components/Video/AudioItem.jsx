@@ -42,7 +42,7 @@ class AudioItem extends React.Component {
   componentDidMount(){
     //this.setState({ctx: new AudioContext()});
     //console.log("onAnimationFrame")
-
+    console.log("mounted");
     this.setState({audio: document.getElementById('myAudio')});
     this.state.audio = document.getElementById('myAudio');
     //audio = document.getElementById('myAudio')
