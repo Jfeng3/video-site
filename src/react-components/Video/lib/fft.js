@@ -27,10 +27,10 @@ function setupTypedArray(name, fallback) {
   }
 }
 
-setupTypedArray("Float32Array", "WebGLFloatArray");
-setupTypedArray("Int32Array",   "WebGLIntArray");
-setupTypedArray("Uint16Array",  "WebGLUnsignedShortArray");
-setupTypedArray("Uint8Array",   "WebGLUnsignedByteArray");
+// setupTypedArray("Float32Array", "WebGLFloatArray");
+// setupTypedArray("Int32Array",   "WebGLIntArray");
+// setupTypedArray("Uint16Array",  "WebGLUnsignedShortArray");
+// setupTypedArray("Uint8Array",   "WebGLUnsignedByteArray");
 
 
 
@@ -200,4 +200,3 @@ FFT.prototype.forward = function(buffer) {
 };
 
 module.exports = FFT;
-

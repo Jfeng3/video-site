@@ -20,9 +20,12 @@
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
     "express": "^4.14.1",
-    "firebase": "^3.6.9",
+    "firebase": "^3.9.0",
+    "prop-types": "^15.5.10",
+    "raf": "^3.3.2",
     "react": "^0.14.9",
     "react-animation-frame": "^0.2.1",
+    "react-audio-player": "^0.5.0",
     "react-dom": "^0.14.9",
     "watch": "^0.17.1"
   }

@@ -6,17 +6,18 @@ import FFT from './lib/fft';
 import dspFilter from './lib/dspFilter';
 import jensenDiff from './lib/jensenDiff';
 import raf from 'raf';
+var Firebase = require('firebase');
 
 
 
 var config = {
-    apiKey: "AIzaSyB72ITVcX5g94YSu4lNr4f697RRsxD64qY",
-    authDomain: "emailanalysis-1178.firebaseapp.com",
-    databaseURL: "https://emailanalysis-1178.firebaseio.com",
-    storageBucket: "emailanalysis-1178.appspot.com",
-    messagingSenderId: "255388495206"
-  };
-  Firebase.initializeApp(config);
+  apiKey: " AIzaSyB72ITVcX5g94YSu4lNr4f697RRsxD64qY",
+  authDomain: "peeq-b81e7.firebaseapp.com",
+  databaseURL: "https://peeq-b81e7.firebaseio.com/playerHighlightVideos",
+  storageBucket: "gs://peeq-b81e7.appspot.com",
+};
+firebase.initializeApp(config);
+  //Firebase.initializeApp(config);
 
 class AudioItem extends React.Component {
   constructor(props) {
