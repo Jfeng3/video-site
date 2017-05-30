@@ -18,7 +18,7 @@ class App extends React.Component {
     return (
       <section>
         <Navbar user={true}/>
-        <AudioItem />
+        <HomePage />
       </section>
     );
   }

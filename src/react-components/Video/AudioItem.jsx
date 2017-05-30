@@ -6,7 +6,6 @@ import FFT from './lib/fft';
 import dspFilter from './lib/dspFilter';
 import jensenDiff from './lib/jensenDiff';
 import raf from 'raf';
-var Firebase = require('firebase');
 
 
 
@@ -21,7 +20,7 @@ class AudioItem extends React.Component {
     this.state = {
       whistleSoundRate : 0,
       audioList: "https://firebasestorage.googleapis.com/v0/b/peeq-b81e7.appspot.com/o/highlights%2Fhighlight0%2FPeeq_transition%2002.mp4?alt=media&token=3b709f12-b67f-46fd-86e8-56efe5c1eca0",
-      ctx: new AudioContext(),
+      ctx: null,
       audio: null,
       audioSrc: null,
       analyser: null,
@@ -57,6 +56,7 @@ class AudioItem extends React.Component {
     //this.setState({ctx: new AudioContext()});
     //console.log("onAnimationFrame")
     console.log("mounted");
+    this.state.ctx = new AudioContext();
     this.state.audio = document.getElementById('myAudio');
     this.state.audio.addEventListener("play", this.onPlay, true);
     //this.state.audio.addEventListener('touchstart', function() { audio.play(); }, false);
@@ -187,8 +187,8 @@ class AudioItem extends React.Component {
 
         <section>
           <section className="container">
-            <video controls id='myAudio'preload="auto" >
-              <source src={this.state.audioList} type="video/mp4"></source>
+            <video controls id={this.props.video_id} preload="auto" >
+              <source src={this.props.video} type="video/mp4"></source>
             </video>
           </section>
           <div className="timer">

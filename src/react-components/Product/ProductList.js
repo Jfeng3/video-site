@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductItem from './ProductItem';
+import AudioItem from '../Video/AudioItem.jsx';
 
 class ProductList extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class ProductList extends React.Component {
       <ul className="product-list">
         {
           this.props.productList.map(function(item, idx) {
-            return <ProductItem key={idx} {...item}/>
+            return <AudioItem video_id={idx} {...item}/>
           })
         }
       </ul>

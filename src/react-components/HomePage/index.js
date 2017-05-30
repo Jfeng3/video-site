@@ -7,11 +7,13 @@ console.log("after")
 console.log("latest")
 
 var config = {
-  apiKey: " AIzaSyB72ITVcX5g94YSu4lNr4f697RRsxD64qY",
-  authDomain: "peeq-b81e7.firebaseapp.com",
-  databaseURL: "https://peeq-b81e7.firebaseio.com",
-  storageBucket: "peeq-b81e7.appspot.com",
-};
+   apiKey: "AIzaSyDCl_r_dnX1gDO6fjVl6-BWJL9gab1BWoA",
+   authDomain: "peeq2-63baf.firebaseapp.com",
+   databaseURL: "https://peeq2-63baf.firebaseio.com",
+   projectId: "peeq2-63baf",
+   storageBucket: "peeq2-63baf.appspot.com",
+   messagingSenderId: "456006647360"
+ };
   Firebase.initializeApp(config);
 
 class HomePage extends React.Component {
@@ -21,23 +23,20 @@ class HomePage extends React.Component {
       productList: []
     }
 
-    var ref = Firebase.database().ref('/playerHighlightVideos')
-    console.log("here",ref);
-    ref.once('value').then(function (snap) {
-      console.log('snapval:', snap.val());
-    });
+    var ref = Firebase.database().ref('/')
     ref.on('value', (snapshot) => {
-      console.log("snapshotting");
       var products = snapshot.val();
       console.log("product: "+ products);
       console.log("keys: "+Object.keys(products));
       var productArr = Object.keys(products).map(function (key) {
-        return products[key];
-      });
+        return  products[key];
 
+      });
+      console.log("url",productArr);
       this.setState({
         productList: productArr
       })
+
     });
   }
 
