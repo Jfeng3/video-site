@@ -1,14 +1,17 @@
 import React from 'react';
 import ProductList from '../Product/ProductList';
-import Firebase from 'firebase';
+console.log("prev");
+import * as Firebase from 'firebase';
+console.log("after")
+//import admin from 'firebase-admin';
+console.log("latest")
 
 var config = {
-    apiKey: "AIzaSyAe7Sd3_RCCemKxTtP5blGmTJqcn1wGsao",
-    authDomain: "emailanalysis-1178.firebaseapp.com",
-    databaseURL: "https://emailanalysis-1178.firebaseio.com",
-    storageBucket: "emailanalysis-1178.appspot.com",
-    messagingSenderId: "255388495206"
-  };
+  apiKey: " AIzaSyB72ITVcX5g94YSu4lNr4f697RRsxD64qY",
+  authDomain: "peeq-b81e7.firebaseapp.com",
+  databaseURL: "https://peeq-b81e7.firebaseio.com",
+  storageBucket: "peeq-b81e7.appspot.com",
+};
   Firebase.initializeApp(config);
 
 class HomePage extends React.Component {
@@ -18,7 +21,13 @@ class HomePage extends React.Component {
       productList: []
     }
 
-    Firebase.database().ref('products').on('value', (snapshot) => {
+    var ref = Firebase.database().ref('/playerHighlightVideos')
+    console.log("here",ref);
+    ref.once('value').then(function (snap) {
+      console.log('snapval:', snap.val());
+    });
+    ref.on('value', (snapshot) => {
+      console.log("snapshotting");
       var products = snapshot.val();
       console.log("product: "+ products);
       console.log("keys: "+Object.keys(products));

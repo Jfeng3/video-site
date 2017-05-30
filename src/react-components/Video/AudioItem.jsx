@@ -10,13 +10,8 @@ var Firebase = require('firebase');
 
 
 
-var config = {
-  apiKey: " AIzaSyB72ITVcX5g94YSu4lNr4f697RRsxD64qY",
-  authDomain: "peeq-b81e7.firebaseapp.com",
-  databaseURL: "https://peeq-b81e7.firebaseio.com/playerHighlightVideos",
-  storageBucket: "gs://peeq-b81e7.appspot.com",
-};
-firebase.initializeApp(config);
+
+//firebase.initializeApp(config);
   //Firebase.initializeApp(config);
 
 class AudioItem extends React.Component {
@@ -25,7 +20,7 @@ class AudioItem extends React.Component {
     this.onPlay = this.onPlay.bind(this);
     this.state = {
       whistleSoundRate : 0,
-      audioList: "/video/simple_game.wav",
+      audioList: "https://firebasestorage.googleapis.com/v0/b/peeq-b81e7.appspot.com/o/highlights%2Fhighlight0%2FPeeq_transition%2002.mp4?alt=media&token=3b709f12-b67f-46fd-86e8-56efe5c1eca0",
       ctx: new AudioContext(),
       audio: null,
       audioSrc: null,
@@ -192,9 +187,9 @@ class AudioItem extends React.Component {
 
         <section>
           <section className="container">
-            <audio controls id='myAudio' >
-              <source src={this.state.audioList} type="audio/wav"></source>
-            </audio>
+            <video controls id='myAudio'preload="auto" >
+              <source src={this.state.audioList} type="video/mp4"></source>
+            </video>
           </section>
           <div className="timer">
             <div className="timer__bar" ref={node => this.bar = node}></div>
