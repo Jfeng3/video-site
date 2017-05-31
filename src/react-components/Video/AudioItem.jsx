@@ -6,19 +6,12 @@ import FFT from './lib/fft';
 import dspFilter from './lib/dspFilter';
 import jensenDiff from './lib/jensenDiff';
 import raf from 'raf';
-var Firebase = require('firebase');
+
+
 
 
 //firebase.initializeApp(config);
-
-var config = {
-  apiKey: " AIzaSyB72ITVcX5g94YSu4lNr4f697RRsxD64qY",
-  authDomain: "peeq-b81e7.firebaseapp.com",
-  databaseURL: "https://peeq-b81e7.firebaseio.com/playerHighlightVideos",
-  storageBucket: "gs://peeq-b81e7.appspot.com",
-};
-Firebase.initializeApp(config);
-
+  //Firebase.initializeApp(config);
 
 class AudioItem extends React.Component {
   constructor(props) {
@@ -29,7 +22,6 @@ class AudioItem extends React.Component {
       tag_id :  "myAudio-"+this.props.video_id,
       audioList: "https://firebasestorage.googleapis.com/v0/b/peeq-b81e7.appspot.com/o/highlights%2Fhighlight0%2FPeeq_transition%2002.mp4?alt=media&token=3b709f12-b67f-46fd-86e8-56efe5c1eca0",
       ctx: null,
-
       audio: null,
       audioSrc: null,
       analyser: null,
@@ -193,14 +185,13 @@ class AudioItem extends React.Component {
     return (
       <section>
         <header>
-          <img src={this.props.thumbnails?  "gs://peeq-b81e7.appspot.com/"+this.props.thumbnails[0]: 'img/banner.jpeg'} width="100%" />
+          <img src={this.props.thumbnails?  "gs://peeq-b81e7.appspot.com/"+this.props.thumbnails[0]: 'img/banner.jpeg'} width="50%" />
         </header>
 
         <section>
           <section className="container">
             <video controls id={this.state.tag_id} preload="auto" >
               <source src={this.props.video} type="video/mp4"></source>
-
             </video>
           </section>
           <div className="timer">
