@@ -9,9 +9,6 @@ import raf from 'raf';
 var Firebase = require('firebase');
 
 
-
-
-
 //firebase.initializeApp(config);
 
 var config = {
@@ -22,6 +19,7 @@ var config = {
 };
 Firebase.initializeApp(config);
 
+
 class AudioItem extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +29,7 @@ class AudioItem extends React.Component {
       tag_id :  "myAudio-"+this.props.video_id,
       audioList: "https://firebasestorage.googleapis.com/v0/b/peeq-b81e7.appspot.com/o/highlights%2Fhighlight0%2FPeeq_transition%2002.mp4?alt=media&token=3b709f12-b67f-46fd-86e8-56efe5c1eca0",
       ctx: null,
+
       audio: null,
       audioSrc: null,
       analyser: null,
@@ -201,6 +200,7 @@ class AudioItem extends React.Component {
           <section className="container">
             <video controls id={this.state.tag_id} preload="auto" >
               <source src={this.props.video} type="video/mp4"></source>
+
             </video>
           </section>
           <div className="timer">
