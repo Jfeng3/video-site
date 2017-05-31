@@ -19,6 +19,7 @@ class AudioItem extends React.Component {
     this.onPlay = this.onPlay.bind(this);
     this.state = {
       whistleSoundRate : 0,
+      tag_id :  "myAudio-"+this.props.video_id,
       audioList: "https://firebasestorage.googleapis.com/v0/b/peeq-b81e7.appspot.com/o/highlights%2Fhighlight0%2FPeeq_transition%2002.mp4?alt=media&token=3b709f12-b67f-46fd-86e8-56efe5c1eca0",
       ctx: null,
       audio: null,
@@ -56,20 +57,13 @@ class AudioItem extends React.Component {
     //this.setState({ctx: new AudioContext()});
     //console.log("onAnimationFrame")
     console.log("mounted");
-    this.state.ctx = new AudioContext();
-    this.state.audio = document.getElementById('myAudio');
+
+    this.state.audio = document.getElementById(this.state.tag_id);
     this.state.audio.addEventListener("play", this.onPlay, true);
     //this.state.audio.addEventListener('touchstart', function() { audio.play(); }, false);
     //audio = document.getElementById('myAudio')
 
-    this.state.audioSrc =  this.state.ctx.createMediaElementSource(this.state.audio);
-    //audioSrc = this.state.ctx.createMediaElementSource(audio);
-    this.state.analyser =   this.state.ctx.createAnalyser();
-    // we have to connect the MediaElementSource with the analyser
-    this.state.audioSrc.connect(this.state.analyser);
-    this.state.audioSrc.connect(this.state.ctx.destination);
-    //this.state.timeDomainData = new Float32Array(this.state.analyser.fftSize);
-    this.state.timeBuf = new Uint8Array( this.state.freqBinCount );
+
 
   }
 
@@ -81,6 +75,15 @@ class AudioItem extends React.Component {
 
 
   whistleFinder() {
+    this.state.ctx = new AudioContext();
+    this.state.audioSrc =  this.state.ctx.createMediaElementSource(this.state.audio);
+    //audioSrc = this.state.ctx.createMediaElementSource(audio);
+    this.state.analyser =   this.state.ctx.createAnalyser();
+    // we have to connect the MediaElementSource with the analyser
+    this.state.audioSrc.connect(this.state.analyser);
+    this.state.audioSrc.connect(this.state.ctx.destination);
+    //this.state.timeDomainData = new Float32Array(this.state.analyser.fftSize);
+    this.state.timeBuf = new Uint8Array( this.state.freqBinCount );
     console.log("in whistlefinder"); //time domain data
 
       var normData, fft, pbp,
@@ -182,12 +185,12 @@ class AudioItem extends React.Component {
     return (
       <section>
         <header>
-          <img src="/img/banner.jpeg" width="100%" />
+          <img src={this.props.thumbnails?  "gs://peeq-b81e7.appspot.com/"+this.props.thumbnails[0]: 'img/banner.jpeg'} width="100%" />
         </header>
 
         <section>
           <section className="container">
-            <video controls id={this.props.video_id} preload="auto" >
+            <video controls id={this.state.tag_id} preload="auto" >
               <source src={this.props.video} type="video/mp4"></source>
             </video>
           </section>
